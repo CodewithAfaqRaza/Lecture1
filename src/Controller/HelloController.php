@@ -3,14 +3,16 @@
 namespace App\Controller;
 
 use LDAP\Result;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class HelloController{
+class HelloController extends AbstractController{
     #[Route('/welcome/{name}',name:'welcome')]
 
     public function welcome(string $name){
-        return new Response('Welcome to Symfony!'. $name);
+        return $this->render("hello/hello.html.twig",['name'=>$name]);
+        // return new Response('Welcome to Symfony!'. $name);
     }
     #[Route('/about')]
 
