@@ -2,4 +2,8 @@
 
 {% block body %}
   <h2>Welcome to World of Symfony {{ name|upper }} !</h2>
+
+  <a href="/about">About Us</a>
+  <a href="/multiply/3/5">Multiply 3 * 5</a>
+  <a href="{{ path('multiply', { a: 3, b: 5 }) }}">Multiply 3 * 5</a>
 {% endblock %}

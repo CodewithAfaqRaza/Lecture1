@@ -2,13 +2,12 @@
 
 namespace App\Controller;
 
-use LDAP\Result;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class HelloController extends AbstractController{
-    #[Route('/welcome/{name}',name:'welcome')]
+    #[Route('/welcome/{name}',name:'welcome',methods:'get')]
 
     public function welcome(string $name){
         return $this->render("hello/hello.html.twig",['name'=>$name]);
@@ -17,11 +16,11 @@ class HelloController extends AbstractController{
     #[Route('/about')]
 
     public function about(){
-        return new Response('About to Symfony!');
+        return $this->render("hello/about.html.twig");
     }
-    #[Route('myltipy/{a<\d+>}/{b<\d+>}')]
-    public function multipy( $a, $b){
+    #[Route('multiply/{a<\d+>}/{b<\d+>}',name:"multiply")]
+    public function multiply( $a, $b){
         $result = $a * $b;
-        return new Response("The result is ".$result);
+        return $this->render("hello/multiply.html.twig",['result'=>$result]);
     }
 }
