@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  {% if students is not empty %}
+    {% for student in students %}
+      <h2>{{ student }}</h2><br />
+    {% endfor %}
+  {% endif %}
+{% endblock %}
