@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Respository\StudentRespository;
+use App\Respository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -16,10 +16,11 @@ class HelloController extends AbstractController{
         return $this->render("hello/hello.html.twig",['name'=>$name]);
         // return new Response('Welcome to Symfony!'. $name);
     }
-    #[Route('/about')]
+    #[Route('/about',name:"aboutPage")]
 // 
-    public function about(LoggerInterface $logger){
-        $logger->info("We have just access the About Us page");
+    public function about(StudentRepository $repo){
+
+        $repo->StudentsData();
         return $this->render("hello/about.html.twig");
     }
     #[Route('multiplyNumbers/{a<\d+>}/{b<\d+>}',name:"multiply")]

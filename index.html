@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gym Website</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .fade-in {
+        animation: fadeIn 2s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-orange-500">GymFit</a>
+        <ul class="flex space-x-6">
+          <li><a href="#" class="hover:text-orange-500">Home</a></li>
+          <li><a href="#" class="hover:text-orange-500">About</a></li>
+          <li><a href="#" class="hover:text-orange-500">Services</a></li>
+          <li><a href="#" class="hover:text-orange-500">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header
+      class="bg-cover bg-center h-screen flex items-center"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      "
+    >
+      <div class="container mx-auto text-center fade-in">
+        <h1 class="text-5xl font-bold mb-4">Transform Your Body</h1>
+        <p class="text-xl mb-8">
+          Join the best gym in town and achieve your fitness goals.
+        </p>
+        <a
+          href="#"
+          class="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600"
+          >Get Started</a
+        >
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="flex justify-center">
+            <img
+              src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Gym"
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+          <div>
+            <p class="text-lg mb-4">
+              We are a state-of-the-art gym offering the best equipment and
+              training programs to help you achieve your fitness goals.
+            </p>
+            <p class="text-lg mb-4">
+              Our certified trainers are here to guide you every step of the
+              way.
+            </p>
+            <a
+              href="#"
+              class="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-gray-800 py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+            <img
+              src="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Personal Training"
+              class="rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-bold mb-4">Personal Training</h3>
+            <p>Get one-on-one coaching from our expert trainers.</p>
+          </div>
+          <div class="bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+            <img
+              src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Group Classes"
+              class="rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-bold mb-4">Group Classes</h3>
+            <p>Join our group classes and train with like-minded people.</p>
+          </div>
+          <div class="bg-gray-700 p-6 rounded-lg shadow-lg text-center">
+            <img
+              src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Nutrition Plans"
+              class="rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-bold mb-4">Nutrition Plans</h3>
+            <p>Customized nutrition plans to complement your workouts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+        <form class="max-w-lg mx-auto">
+          <div class="mb-4">
+            <input
+              type="text"
+              placeholder="Your Name"
+              class="w-full p-3 rounded-lg bg-gray-700 text-white"
+            />
+          </div>
+          <div class="mb-4">
+            <input
+              type="email"
+              placeholder="Your Email"
+              class="w-full p-3 rounded-lg bg-gray-700 text-white"
+            />
+          </div>
+          <div class="mb-4">
+            <textarea
+              placeholder="Your Message"
+              class="w-full p-3 rounded-lg bg-gray-700 text-white"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-10">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2023 GymFit. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
