@@ -29,7 +29,7 @@ class HelloController extends AbstractController{
         return $this->render("hello/multiply.html.twig",['result'=>$result]);
     }
     #[Route('getStudents')]
-    public function getStudent(StudentRespository $repo){
+    public function getStudent(StudentRepository $repo){
         $students = $repo->StudentsData();
 
         return $this->render('student/student.html.twig',['students'=>$students]);
