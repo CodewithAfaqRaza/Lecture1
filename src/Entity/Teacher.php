@@ -26,6 +26,9 @@ class Teacher
     #[ORM\Column(type: Types::TEXT)]
     private ?string $Address = null;
 
+    #[ORM\Column]
+    private ?int $ContactNumber = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Teacher
     public function setAddress(string $Address): static
     {
         $this->Address = $Address;
+
+        return $this;
+    }
+
+    public function getContactNumber(): ?int
+    {
+        return $this->ContactNumber;
+    }
+
+    public function setContactNumber(int $ContactNumber): static
+    {
+        $this->ContactNumber = $ContactNumber;
 
         return $this;
     }
