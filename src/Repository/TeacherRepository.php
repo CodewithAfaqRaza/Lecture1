@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Teacher;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -12,12 +13,20 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TeacherRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry , private EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Teacher::class);
     }
-    public function add(EntityManager $entityManager , bool $flush = false){
-    
+    public function add(Teacher $teacher, bool $flush = false){
+       $this->entityManager->persist($teacher);
+       if($flush){
+        $this->entityManager->flush();
+       }
+    }
+    public function remove(Teacher $teacher){
+       $this->entityManager->remove($teacher);
+       $this->entityManager->flush();
+     
     }
 
     //    /**
