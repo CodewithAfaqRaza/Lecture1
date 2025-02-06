@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TeacherRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TeacherRepository::class)]
 class Teacher
@@ -15,18 +16,23 @@ class Teacher
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Name Should not be empty")]
     private ?string $Name = null;
-
+    
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank (message:" Father Name Should not be empty")]
     private ?string $FatherName = null;
-
+    
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Email Should not be empty")]
     private ?string $Email = null;
-
+    
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message:"Address Should not be empty")]
     private ?string $Address = null;
-
+    
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Contact Number Should not be empty")]
     private ?int $ContactNumber = null;
 
     public function getId(): ?int

@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+  {% for message in app.flashes('success') %}
+    {{ message }}
+  {% endfor %}
   {% for teacher in teachers %}
     <div class="text-2xl p-3 m-5 bg-gray-700">{{ teacher.id ~ ' ___--- ' ~ teacher.name }}</div>
     <br />
