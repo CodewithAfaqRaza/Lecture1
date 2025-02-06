@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ <div
+      class="container max-w-[1920px] w-full bg-gray-200 flex justify-center items-center min-h-screen"
+    >
+      <div
+        class="bg-white w-full max-w-2xl md:w-2xl lg:w-3xl px-4 md:px-10 lg:p-14 py-10 xl:p-16 rounded-lg shadow-xl"
+      >
+  <h1>This is Coming from the teacher Class</h1>
+  {# {{ form(form) }} #}
+  {{ form_start(form,{'attr':{'class':"space-y-4 flex flex-col gap-2 md:gap-3 lg-gap-4 xl:gap-5",'novalidate':'novalidate'}}) }}
+   <dev class="text-red-600">
+   {{ form_errors(form) }}
+   </dev>
+    <div class="flex flex-col sm:flex-row sm:gap-8">
+            <div class="w-full">
+            {{ form_errors(form.name) }}
+        {{ form_label(form.name,"Teacher Name",{'label_attr':{'class':"block text-xs md:text-sm lg:text-base font-medium text-gray-700"}}) }}
+        {{ form_widget(form.name,{'attr':{'class':"mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-xs md:text-sm lg:text-base py-2 px-2 md:py-4 border-gray-400"}}) }}
+
+            </div>
+          </div>
+    <div class="flex flex-col sm:flex-row sm:gap-8">
+            <div class="w-full">
+            {{ form_errors(form.fathername) }}
+
+        {{ form_label(form.fathername,"Father Name",{'label_attr':{'class':"block text-xs md:text-sm lg:text-base font-medium text-gray-700"}}) }}
+        {{ form_widget(form.fathername,{'attr':{'class':"mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-xs md:text-sm lg:text-base py-2 px-2 md:py-4 border-gray-400"}}) }}
+
+            </div>
+          </div>
+    <div class="flex flex-col sm:flex-row sm:gap-8">
+            <div class="w-full">
+            {{ form_errors(form.email) }}
+
+        {{ form_label(form.email,"Email",{'label_attr':{'class':"block text-xs md:text-sm lg:text-base font-medium text-gray-700"}}) }}
+        {{ form_widget(form.email,{'attr':{'class':"mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-xs md:text-sm lg:text-base py-2 px-2 md:py-4 border-gray-400"}}) }}
+
+            </div>
+          </div>
+    <div class="flex flex-col sm:flex-row sm:gap-8">
+            <div class="w-full">
+        {{ form_label(form.address,"Address",{'label_attr':{'class':"block text-xs md:text-sm lg:text-base font-medium text-gray-700"}}) }}
+        {{ form_widget(form.address,{'attr':{'class':"mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-xs md:text-sm lg:text-base py-2 px-2 md:py-4 border-gray-400"}}) }}
+
+            </div>
+          </div>
+    <div class="flex flex-col sm:flex-row sm:gap-8">
+            <div class="w-full">
+        {{ form_label(form.contactNumber,"ContactNumber",{'label_attr':{'class':"block text-xs md:text-sm lg:text-base font-medium text-gray-700"}}) }}
+        {{ form_widget(form.contactNumber,{'attr':{'class':"mt-1 block w-full rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-xs md:text-sm lg:text-base py-2 px-2 md:py-4 border-gray-400"}}) }}
+
+            </div>
+          </div>
+    <div class="flex flex-col sm:flex-row sm:gap-8">
+            <div class="w-full">
+        {{ form_label(form.save,"Add Teacher",{'label_attr':{'class':"block text-xs md:text-sm lg:text-base font-medium text-gray-700"}}) }}
+        {{ form_widget(form.save,{'attr':{'class':"w-full sm:w-auto px-6 py-2 bg-black text-white font-medium text-lg rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 flex items-center justify-center gap-2"}}) }}
+
+            </div>
+          </div>
+      
+ 
+
+  {{ form_end(form) }}
+ </div>
+ </div>
+{% endblock %}
