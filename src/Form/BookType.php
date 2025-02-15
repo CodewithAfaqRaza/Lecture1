@@ -17,7 +17,8 @@ class BookType extends AbstractType
             ->add('title')
             ->add('auther', EntityType::class, [
                 'class' => Auther::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
+                'placeholder' => 'Select Book',
             ])
         ;
     }

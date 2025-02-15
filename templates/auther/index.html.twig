@@ -1,39 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Auther index{% endblock %}
+{% block title %}
+  Auther index
+{% endblock %}
 
 {% block body %}
-    <h1>Auther index</h1>
+  <h1>Auther index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Fathername</th>
-                <th>Address</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for auther in authers %}
-            <tr>
-                <td>{{ auther.id }}</td>
-                <td>{{ auther.name }}</td>
-                <td>{{ auther.fathername }}</td>
-                <td>{{ auther.address }}</td>
-                <td>
-                    <a href="{{ path('app_auther_show', {'id': auther.id}) }}">show</a>
-                    <a href="{{ path('app_auther_edit', {'id': auther.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Fathername</th>
+        <th>Address</th>
+        <th>Books</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for auther in authers %}
+        <tr>
+          <td>{{ auther.id }}</td>
+          <td>{{ auther.name }}</td>
+          <td>{{ auther.fathername }}</td>
+          <td>{{ auther.address }}</td>
+          {% for book in auther.books %}
+            <td>{{ book.title }}</td>
+          {% endfor %}
+          <td>
+            <a href="{{ path('app_auther_show', { id: auther.id }) }}">show</a>
+            <a href="{{ path('app_auther_edit', { id: auther.id }) }}">edit</a>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="5">no records found</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-    <a href="{{ path('app_auther_new') }}">Create new</a>
+  <a href="{{ path('app_auther_new') }}">Create new</a>
 {% endblock %}
