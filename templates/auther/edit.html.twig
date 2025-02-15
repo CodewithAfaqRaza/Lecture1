@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Auther{% endblock %}
+
+{% block body %}
+    <h1>Edit Auther</h1>
+
+    {{ include('auther/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_auther_index') }}">back to list</a>
+
+    {{ include('auther/_delete_form.html.twig') }}
+{% endblock %}
