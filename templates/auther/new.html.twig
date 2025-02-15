@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Auther{% endblock %}
+
+{% block body %}
+    <h1>Create new Auther</h1>
+
+    {{ include('auther/_form.html.twig') }}
+
+    <a href="{{ path('app_auther_index') }}">back to list</a>
+{% endblock %}
