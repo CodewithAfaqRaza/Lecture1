@@ -15,7 +15,7 @@ class Passport
 
     #[ORM\Column(length: 255)]
     private ?string $passNum = null;
-
+    // owning side 
     #[ORM\OneToOne(inversedBy: 'passport', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Citizen $citizen = null;
