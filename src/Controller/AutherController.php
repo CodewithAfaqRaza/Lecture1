@@ -17,8 +17,16 @@ final class AutherController extends AbstractController
     #[Route(name: 'app_auther_index', methods: ['GET'])]
     public function index(AutherRepository $autherRepository): Response
     {
+        $authers  = $autherRepository->getAllByDQLQB();
+        // dd($authers);
+        // foreach($authers as $auther){
+        //     $books = $auther->getBooks();
+        //     foreach($books as $book){
+        //         dump($book->getTitle());
+        //     }
+        // }
         return $this->render('auther/index.html.twig', [
-            'authers' => $autherRepository->findAll(),
+            'authers' => $authers,
         ]);
     }
 

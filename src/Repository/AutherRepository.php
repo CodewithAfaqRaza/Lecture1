@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Auther;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,4 +41,16 @@ class AutherRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+    public function getAllByDQL(){
+        $dql = $this->getEntityManager()->createQuery("Select auther from \App\Entity\Auther as  auther ORDER BY auther.id Desc ");
+        return $dql->getResult();
+    }
+    public function getAllByDQLQB(){
+    return $this->createQueryBuilder('auther')
+        ->addSelect('book')
+        ->leftJoin('auther.books','book')
+        ->orderBy('auther.id', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
 }
