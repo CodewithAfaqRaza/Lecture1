@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paper index{% endblock %}
+
+{% block body %}
+    <h1>Paper index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paper in papers %}
+            <tr>
+                <td>{{ paper.id }}</td>
+                <td>{{ paper.title }}</td>
+                <td>{{ paper.slug }}</td>
+                <td>{{ paper.createdAt ? paper.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ paper.updatedAt ? paper.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_paper_show', {'id': paper.id}) }}">show</a>
+                    <a href="{{ path('app_paper_edit', {'id': paper.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_paper_new') }}">Create new</a>
+{% endblock %}
