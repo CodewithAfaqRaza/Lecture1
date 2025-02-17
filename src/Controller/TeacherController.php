@@ -18,9 +18,12 @@ class TeacherController extends AbstractController{
 
  #[Route('/showall',name:'show_all')]
 
- public function showall(TeacherRepository $teacherRepository){
-    $teachers = $teacherRepository->findAll();
-    return $this->render('/teacher/showall.html.twig',['teachers'=>$teachers]);
+ public function showall(Request $request, TeacherRepository $teacherRepository){
+   //  $teachers = $teacherRepository->findAll();
+      $teachers = $teacherRepository->findAllByPagerFanta();
+      $teachers->setMaxPerPage(4);
+      $teachers->setCurrentPage($request->query->get('page',1));
+      return $this->render('/teacher/showall.html.twig',['teachers'=>$teachers]);
  }
 
  #[Route('/showone/{id<\d+>}',name:'show_one')]
