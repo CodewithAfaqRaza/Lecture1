@@ -50,13 +50,13 @@ final class PaperController extends AbstractController
             'paper' => $paper,
         ]);
     }
-    // #[Route('/{slug}', name: 'app_paper_show', methods: ['GET'])]
-    // public function show(#[MapEntity(mapping: ['slug'=>'slug'])] Paper $paper): Response
-    // {
-    //     return $this->render('paper/show.html.twig', [
-    //         'paper' => $paper,
-    //     ]);
-    // }
+    #[Route('/{slug}', name: 'app_paper_show', methods: ['GET'])]
+    public function showSlug(#[MapEntity(mapping: ['slug'=>'slug'])] Paper $paper): Response
+    {
+        return $this->render('paper/show.html.twig', [
+            'paper' => $paper,
+        ]);
+    }
 
     #[Route('/{id}/edit', name: 'app_paper_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Paper $paper, EntityManagerInterface $entityManager): Response
