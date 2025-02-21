@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Attribute\Route;
 use Psr\Log\LoggerInterface; 
 
 class HelloController extends AbstractController{
-    #[Route('/welcome/{name}',name:'welcome',methods:'get')]
+    #[Route('/welcome',name:'welcome',methods:'get')]
 
-    public function welcome(string $name){
+    public function welcome(){
 
-        return $this->render("hello/hello.html.twig",['name'=>$name]);
-        // return new Response('Welcome to Symfony!'. $name);
+        return $this->render("hello/hello.html.twig",);
+        return new Response('Welcome to Symfony!');
     }
     #[Route('/about',name:"aboutPage")]
 // 

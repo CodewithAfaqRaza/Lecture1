@@ -49,7 +49,7 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('welcome');
+            return $this->redirectToRoute('afterRegistration');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -70,12 +70,17 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('/app_register');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('/afterRegistration');
+    }
+    #[Route('/afterRegistration', name: 'afterRegistration')]
+    public function afterRegistration(Request $request)
+    {
+        return $this->render('registration/afterRegister.html.twig');
     }
 }
