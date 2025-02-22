@@ -9,6 +9,10 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_INVESTOR
+        ROLE_TEACHER: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_TEACHER]            
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -19,9 +23,12 @@ security:
             form_login:
                      login_path: app_login
                      check_path: app_login
+                     enable_csrf: true
             logout:
                      path: app_logout
-                     target: app_register
+                     target: app_login
+                     # where to redirect after logout
+                     # target: app_any_route
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
