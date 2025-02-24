@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -35,6 +37,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private bool $isVerified = false;
+
+    /**
+     * @var Collection<int, Journal>
+     */
+    #[ORM\OneToMany(targetEntity: Journal::class, mappedBy: 'author')]
+    private Collection $journals;
+
+    public function __construct()
+    {
+        $this->journals = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +132,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Journal>
+     */
+    public function getJournals(): Collection
+    {
+        return $this->journals;
+    }
+
+    public function addJournal(Journal $journal): static
+    {
+        if (!$this->journals->contains($journal)) {
+            $this->journals->add($journal);
+            $journal->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJournal(Journal $journal): static
+    {
+        if ($this->journals->removeElement($journal)) {
+            // set the owning side to null (unless already changed)
+            if ($journal->getAuthor() === $this) {
+                $journal->setAuthor(null);
+            }
+        }
 
         return $this;
     }
